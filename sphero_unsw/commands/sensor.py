@@ -3,7 +3,7 @@ This module implements extended functionality of spherov2.commands.sensor to sup
 
 # ====================================================================
 # Authors: Kathryn Kasmarik, Reda Ghanem
-# Version 0.1.6
+# Version 0.1.7
 # School of Systems and Computing, UNSW Canberra
 # ==================================================================== 
 

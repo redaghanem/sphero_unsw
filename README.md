@@ -1,7 +1,7 @@
 <!-- 
 # ====================================================================
 # Authors: Kathryn Kasmarik, Reda Ghanem
-# Version 0.1.6
+# Version 0.1.7
 # School of Systems and Computing, UNSW Canberra
 # ==================================================================== 
 -->
@@ -12,7 +12,7 @@
 ![status](https://img.shields.io/pypi/status/sphero_unsw?style=for-the-badge)
 ![python version](https://img.shields.io/pypi/pyversions/sphero_unsw?style=for-the-badge)
 [![pypi](https://img.shields.io/pypi/v/sphero_unsw?style=for-the-badge)](https://pypi.org/project/sphero_unsw/)
-[![license](https://img.shields.io/pypi/l/sphero_unsw?style=for-the-badge)](LICENSE)
+[![license](https://img.shields.io/pypi/l/sphero_unsw?style=for-the-badge)](https://github.com/redaghanem/sphero_unsw/blob/main/LICENSE)
 ![last commit](https://img.shields.io/github/last-commit/redaghanem/sphero_unsw?style=for-the-badge)
 [![Downloads](https://static.pepy.tech/badge/sphero_unsw?style=for-the-badge)](https://pepy.tech/project/sphero_unsw)
 

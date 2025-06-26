@@ -1,6 +1,6 @@
 # ====================================================================
 # Authors: Kathryn Kasmarik, Reda Ghanem
-# Version 0.1.6
+# Version 0.1.7
 # School of Systems and Computing, UNSW Canberra
 # ==================================================================== 
 
@@ -13,7 +13,7 @@
 name = "sphero_unsw"
 
 # The current version of the package — increment for each new release
-version = "0.1.6"
+version = "0.1.7"
 
 # A short description of the package's purpose
 description = "Extensions and patches for spherov2 to support Sphero BOLT+ (UNSW Canberra fork)"
@@ -25,13 +25,16 @@ authors = [
 ]
 
 # The license file to use (must be included in the project root)
-license = { file = "LICENSE" }
+license = "MIT"
 
 # The README file used for the PyPI long description
 readme = "README.md"
 
 # Updated to support Python 3.7 through 3.10 (inclusive)
 requires-python = ">=3.7, <=3.10"
+
+# Keywords
+keywords = [ "sphero", "sphero bolt", "robotics", "unsw"]
 
 # ------------------------------
 # Required Dependencies
@@ -50,7 +53,6 @@ classifiers = [
     "Development Status :: 3 - Alpha",             # Indicates early development; not yet stable
     "Framework :: Robot Framework :: Library",     # Indicates this is a library usable in robotics-related frameworks
     "Intended Audience :: Education",              # Specifies the educational purpose of the project
-    "License :: OSI Approved :: MIT License",      # Specifies that the MIT License applies
     "Operating System :: OS Independent",          # Confirms that the package works across different operating systems
     "Programming Language :: Python :: 3.7",       # Explicitly states Python 3.7 compatibility
     "Programming Language :: Python :: 3.8",       # Explicitly states Python 3.8 compatibility
