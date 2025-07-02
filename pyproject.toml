@@ -1,6 +1,6 @@
 # ====================================================================
 # Authors: Kathryn Kasmarik, Reda Ghanem
-# Version 0.1.7
+# Version 0.1.8
 # School of Systems and Computing, UNSW Canberra
 # ==================================================================== 
 
@@ -13,7 +13,7 @@
 name = "sphero_unsw"
 
 # The current version of the package — increment for each new release
-version = "0.1.7"
+version = "0.1.8"
 
 # A short description of the package's purpose
 description = "Extensions and patches for spherov2 to support Sphero BOLT+ (UNSW Canberra fork)"
@@ -30,8 +30,8 @@ license = "MIT"
 # The README file used for the PyPI long description
 readme = "README.md"
 
-# Updated to support Python 3.7 through 3.10 (inclusive)
-requires-python = ">=3.7, <=3.10"
+# Updated to support Python 3.7 through all 3.10.x versions
+requires-python = ">=3.7, <3.11"
 
 # Keywords
 keywords = [ "sphero", "sphero bolt", "robotics", "unsw"]

@@ -3,7 +3,7 @@ This module implements extended functionality of spherov2.scanner for Sphero BOL
 
 # ====================================================================
 # Authors: Kathryn Kasmarik, Reda Ghanem
-# Version 0.1.7
+# Version 0.1.8
 # School of Systems and Computing, UNSW Canberra
 # ==================================================================== 
 
@@ -16,12 +16,12 @@ This module implements extended functionality of spherov2.scanner for Sphero BOL
 
 # Import all necessary classes and functions from spherov2
 from sphero_unsw.scanner import *
-# Import our new implementation of BOLTPLUS from our new library 
-from spherov2.toy.bolt import BOLT as BOLTPLUS
+# Import BOLT as BASEBOLT from spherov2.toy.bolt
+from spherov2.toy.bolt import BOLT as BASEBOLT
 
 
 
-class BOLT(BOLTPLUS):
+class BOLT(BASEBOLT):
     """
     This class extends the BOLTPLUS class to support Sphero BOLT+ robot.
     It inherits all functionalities from BOLTPLUS and can be used to

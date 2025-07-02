@@ -3,7 +3,7 @@ This module implements extended functionality of spherov2.utils for Sphero BOLT+
 
 # ====================================================================
 # Authors: Kathryn Kasmarik, Reda Ghanem
-# Version 0.1.7
+# Version 0.1.8
 # School of Systems and Computing, UNSW Canberra
 # ==================================================================== 
 
@@ -25,7 +25,8 @@ from spherov2.utils import *
 from spherov2.utils import ToyUtil as BaseToyUtil
 # Import our new implementation of BOLTPLUS from our new library 
 from sphero_unsw.toy.boltplus import BOLTPLUS
-
+# Import our new implementation of BOLT from our new library
+from sphero_unsw.toy.bolt import BOLT
 
 
 # ------------------------------------------------------------------------- #

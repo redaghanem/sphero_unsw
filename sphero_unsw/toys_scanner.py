@@ -3,7 +3,7 @@ This module implements a class for scanning and selecting Sphero toys.
 
 # ====================================================================
 # Authors: Kathryn Kasmarik, Reda Ghanem
-# Version 0.1.7
+# Version 0.1.8
 # School of Systems and Computing, UNSW Canberra
 # ==================================================================== 
 
