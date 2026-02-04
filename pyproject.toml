@@ -23,7 +23,7 @@
 #  introductory robotics concepts through hands-on activities using Sphero BOLT+ robots.
 #
 #  |---------------------------------------------------------------------|
-#  | Version: 0.1.9                                                      |
+#  | Version: 0.1.10                                                      |
 #  | License: MIT License                                                |
 #  | Repository: https://github.com/redaghanem/sphero_unsw               |
 #  | Pypi package: https://pypi.org/project/sphero-unsw                  |
@@ -42,7 +42,7 @@
 name = "sphero_unsw"
 
 # The current version of the package — increment for each new release
-version = "0.1.9"
+version = "0.1.10"
 
 # A short description of the package's purpose
 description = "Extensions and patches for spherov2 to support Sphero BOLT+ (UNSW Canberra fork)"

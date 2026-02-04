@@ -24,7 +24,7 @@
 #  introductory robotics concepts through hands-on activities using Sphero BOLT+ robots.
 #
 #  |---------------------------------------------------------------------|
-#  | Version: 0.1.9                                                      |
+#  | Version: 0.1.10                                                      |
 #  | License: MIT License                                                |
 #  | Repository: https://github.com/redaghanem/sphero_unsw               |
 #  | Pypi package: https://pypi.org/project/sphero-unsw                  |
@@ -788,46 +788,55 @@ class SpheroEduAPI:
 
         # Extract gyroscope rotation rates (in deg/s)
         # Use 'x', 'y', 'z' instead of 'pitch', 'roll', 'yaw'
-        gx, gy, gz = gyro['x'], gyro['y'], gyro['z']
+        gx = gyro.get('x', gyro.get('pitch', 0))
+        gy = gyro.get('y', gyro.get('roll', 0))
+        gz = gyro.get('z', gyro.get('yaw', 0))
+
         gyro_mag = math.sqrt(gx * gx + gy * gy + gz * gz)
 
         now = time.time()
-
+        
+        
         # Changes since last frame
         speed_drop = self.__last_speed - speed
         accel_spike = accel_mag - self.__last_accel_mag
         gyro_spike = gyro_mag - self.__last_gyro_mag
 
+        # Calculate the 'Jerk' (change in acceleration magnitude)
+        accel_jerk = abs(accel_mag - self.__last_accel_mag)
+
         # ---------------------------------------------------------------
         # RULE 1 — Collision while moving (classic bump into wall)
         # ---------------------------------------------------------------
+        # Refine Rule 1: Moving Collision
+        # Use a combination of jerk and speed drop for high confidence
         moving_collision = (
-            accel_mag > self.__accel_threshold and
+            accel_jerk > 0.8 and  # Sudden impact spike
+            accel_mag > self.__accel_threshold and 
             speed_drop > self.__speed_drop_threshold
         )
-
         # ---------------------------------------------------------------
         # RULE 2 — Impact while stationary (hand hit / slap / shake)
         # ---------------------------------------------------------------
         stationary_impact = (
             speed < 5 and
-            accel_spike > 0.5 and
-            accel_mag > 1.4
+            accel_jerk > 1.2  # Use jerk instead of spike
         )
+
 
         # ---------------------------------------------------------------
         # RULE 3 — Sudden rotation (glancing blow or spin from impact)
         # ---------------------------------------------------------------
-        rotation_collision = (
-            gyro_spike > 100 and      # Sudden rotation change (deg/s)
-            gyro_mag > 200 and        # High rotation rate
-            accel_mag > 1.2           # Some acceleration spike
-        )
+        # rotation_collision = (
+        #     gyro_spike > 100 and      # Sudden rotation change (deg/s)
+        #     gyro_mag > 200 and        # High rotation rate
+        #     accel_mag > 1.2           # Some acceleration spike
+        # )
 
         # ---------------------------------------------------------------
         # Trigger collision event if any condition is met
         # ---------------------------------------------------------------
-        if (moving_collision or stationary_impact or rotation_collision) and \
+        if (moving_collision or stationary_impact) and \
         (now - self.__last_collision_time) > self.__collision_dead_time:
 
             # Fire the collision event

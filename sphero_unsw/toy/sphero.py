@@ -24,7 +24,7 @@
 #  introductory robotics concepts through hands-on activities using Sphero BOLT+ robots.
 #
 #  |---------------------------------------------------------------------|
-#  | Version: 0.1.9                                                      |
+#  | Version: 0.1.10                                                      |
 #  | License: MIT License                                                |
 #  | Repository: https://github.com/redaghanem/sphero_unsw               |
 #  | Pypi package: https://pypi.org/project/sphero-unsw                  |
