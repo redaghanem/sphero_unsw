@@ -33,17 +33,20 @@
 # ========================================================================
 """
 
-from typing import NamedTuple, Union
+from sphero_unsw.commands import Commands
 
 
-class ToyType(NamedTuple):
-    display_name: str
-    prefix: Union[str, None]
-    filter_prefix: str
-    cmd_safe_interval: float
+class Bootloader(Commands):
+    _did = 1
 
+    @staticmethod
+    def begin_reflash(toy, proc=None):
+        toy._execute(Bootloader._encode(toy, 2, proc))
 
-class Color(NamedTuple):
-    r: int = None
-    g: int = None
-    b: int = None
+    @staticmethod
+    def here_is_page(toy, proc=None):
+        toy._execute(Bootloader._encode(toy, 3, proc))
+
+    @staticmethod
+    def jump_to_main(toy, proc=None):
+        toy._execute(Bootloader._encode(toy, 4, proc))

@@ -1,12 +1,36 @@
 """
-This module implements extended functionality of spherov2.toy for Sphero BOLT+ to support Sphero BOLT+ robot.
-
-# ====================================================================
-# Authors: Kathryn Kasmarik, Reda Ghanem
-# Version 0.1.8
-# School of Systems and Computing, UNSW Canberra
-# ==================================================================== 
-
+# ========================================================================
+#  sphero_unsw: Extensions and patches for Sphero BOLT+
+#  A fork of the original spherov2 library
+#
+#  Copyright (c) 2019-2021
+#      Hanbang Wang,  https://www.cis.upenn.edu/~hanbangw
+#      Elionardo Feliciano
+#  Original project: https://github.com/EnotPoloskun/spherov2.py
+#
+#  library spherov2 was originally created for educational use in CIS 521: 
+#  Artificial Intelligence at the University of Pennsylvania, where Sphero 
+#  robots are used to help teach the foundations of AI.
+#
+#
+#  This extension was developed by:
+#       Kathryn Kasmarik (kathryn.kasmarik@unsw.edu.au)
+#       Reda Ghanem (reda.ghanem@unsw.edu.au)
+#  From the School of Systems and Computing, UNSW Canberra, to support the Sphero BOLT+ robot.
+#
+#  This extension has been developed for educational use as part of the course ZEIT1102:
+#  Introduction to Programming at the University of New South Wales, Canberra (UNSW Canberra).
+#  It is specifically designed to support students in learning programming fundamentals and 
+#  introductory robotics concepts through hands-on activities using Sphero BOLT+ robots.
+#
+#  |---------------------------------------------------------------------|
+#  | Version: 0.1.9                                                      |
+#  | License: MIT License                                                |
+#  | Repository: https://github.com/redaghanem/sphero_unsw               |
+#  | Pypi package: https://pypi.org/project/sphero-unsw                  |
+#  |---------------------------------------------------------------------|
+#
+# ========================================================================
 """
 
 # ------------------------------------------------------------------------- #
@@ -17,18 +41,18 @@ from collections import OrderedDict
 from enum import IntEnum
 from functools import partialmethod, lru_cache
 
-# Import all necessary classes and functions from spherov2
-from spherov2.commands.api_and_shell import ApiAndShell
-from spherov2.commands.connection import Connection
-from spherov2.commands.drive import Drive
-from spherov2.commands.firmware import Firmware
-from spherov2.commands.io import IO
-from spherov2.commands.power import Power
+# Import all necessary classes and functions from sphero_unsw
+from sphero_unsw.commands.api_and_shell import ApiAndShell
+from sphero_unsw.commands.connection import Connection
+from sphero_unsw.commands.drive import Drive
+from sphero_unsw.commands.firmware import Firmware
+from sphero_unsw.commands.io import IO
+from sphero_unsw.commands.power import Power
 from sphero_unsw.commands.sensor import Sensor              # new import for Sphero UNSW
-from spherov2.commands.system_info import SystemInfo
-from spherov2.controls.v2 import AnimationControl, DriveControl, LedControl, SensorControl, StatsControl, Processors
-from spherov2.toy import ToyV2, Toy, ToySensor
-from spherov2.types import ToyType
+from sphero_unsw.commands.system_info import SystemInfo
+from sphero_unsw.controls.v2 import AnimationControl, DriveControl, LedControl, SensorControl, StatsControl, Processors
+from sphero_unsw.toy import ToyV2, Toy, ToySensor
+from sphero_unsw.types import ToyType
 
 
 # ------------------------------------------------------------------------- #
@@ -37,6 +61,7 @@ from spherov2.types import ToyType
 class BOLTPLUS(ToyV2):
     toy_type = ToyType('Sphero BOLT', 'BP-', 'BP', .075) 
     #_handshake = [('00020005-574f-4f20-5370-6865726f2121', bytearray(b'usetheforce...band'))] #TODO: find correct info here
+
 
 
     class LEDs(IntEnum):
@@ -214,7 +239,18 @@ class BOLTPLUS(ToyV2):
                                                            Sensor.collision_detected_notify)  # CollisionDetectedNotifyCommand
     remove_collision_detected_notify_listener = partialmethod(Toy._remove_listener,
                                                               Sensor.collision_detected_notify)  # CollisionDetectedNotifyCommand
+    
+    #######################################################################################
+    # NEW CODE TO SUPPORT BOLTPLUS TO SUPPORT BOLT+
+    # Enable/disable collision detection notify
+    enable_collision_detected_notify = partialmethod(Sensor.enable_collision_detected_notify, proc=Processors.PRIMARY)
+
+    
     configure_collision_detection = partialmethod(Sensor.configure_collision_detection, proc=Processors.PRIMARY)  # ConfigureCollisionDetectionCommand
+    #######################################################################################
+
+    
+    
     enable_gyro_max_notify = partialmethod(Sensor.enable_gyro_max_notify, proc=Processors.PRIMARY)  # EnableGyroMaxNotifyCommand
     get_ambient_light_sensor_value = partialmethod(Sensor.get_ambient_light_sensor_value, proc=Processors.PRIMARY)
     get_bot_to_bot_infrared_readings = partialmethod(Sensor.get_bot_to_bot_infrared_readings, proc=Processors.PRIMARY)  # GetBotToBotInfraredReadingsCommand

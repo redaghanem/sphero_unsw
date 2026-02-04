@@ -33,17 +33,13 @@
 # ========================================================================
 """
 
-from typing import NamedTuple, Union
+from sphero_unsw.commands.core import Core
+from sphero_unsw.toy.ollie import Ollie
+from sphero_unsw.types import ToyType
 
 
-class ToyType(NamedTuple):
-    display_name: str
-    prefix: Union[str, None]
-    filter_prefix: str
-    cmd_safe_interval: float
+class BB8(Ollie):
+    toy_type = ToyType('BB-8', 'BB-', 'BB', .06)
 
-
-class Color(NamedTuple):
-    r: int = None
-    g: int = None
-    b: int = None
+    # Core
+    get_factory_config_block_crc = Core.get_factory_config_block_crc

@@ -33,17 +33,15 @@
 # ========================================================================
 """
 
-from typing import NamedTuple, Union
+from enum import IntEnum
+from typing import NamedTuple
 
 
-class ToyType(NamedTuple):
-    display_name: str
-    prefix: Union[str, None]
-    filter_prefix: str
-    cmd_safe_interval: float
+class MotorIndexes(IntEnum):
+    LEFT_MOTOR_INDEX = 0
+    RIGHT_MOTOR_INDEX = 1
 
 
-class Color(NamedTuple):
-    r: int = None
-    g: int = None
-    b: int = None
+class MotorStall(NamedTuple):
+    motor_index: MotorIndexes
+    is_triggered: bool

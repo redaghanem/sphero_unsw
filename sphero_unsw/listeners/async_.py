@@ -33,17 +33,16 @@
 # ========================================================================
 """
 
-from typing import NamedTuple, Union
+from typing import NamedTuple
 
 
-class ToyType(NamedTuple):
-    display_name: str
-    prefix: Union[str, None]
-    filter_prefix: str
-    cmd_safe_interval: float
-
-
-class Color(NamedTuple):
-    r: int = None
-    g: int = None
-    b: int = None
+class CollisionDetected(NamedTuple):
+    acceleration_x: float
+    acceleration_y: float
+    acceleration_z: float
+    x_axis: bool
+    y_axis: bool
+    power_x: int
+    power_y: int
+    speed: int
+    time: float

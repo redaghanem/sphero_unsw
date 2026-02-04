@@ -33,17 +33,12 @@
 # ========================================================================
 """
 
-from typing import NamedTuple, Union
+from sphero_unsw.commands.sphero import Sphero as SpheroCmd
+from sphero_unsw.toy.sphero import Sphero
+from sphero_unsw.types import ToyType
 
 
-class ToyType(NamedTuple):
-    display_name: str
-    prefix: Union[str, None]
-    filter_prefix: str
-    cmd_safe_interval: float
+class Ollie(Sphero):
+    toy_type = ToyType('Ollie', '2B-', '2B', .06)
 
-
-class Color(NamedTuple):
-    r: int = None
-    g: int = None
-    b: int = None
+    get_sku = SpheroCmd.get_sku

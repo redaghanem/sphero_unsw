@@ -33,17 +33,14 @@
 # ========================================================================
 """
 
-from typing import NamedTuple, Union
+from sphero_unsw.commands.sphero import RawMotorModes
+
+_ = RawMotorModes
 
 
-class ToyType(NamedTuple):
-    display_name: str
-    prefix: Union[str, None]
-    filter_prefix: str
-    cmd_safe_interval: float
+class PacketDecodingException(Exception):
+    ...
 
 
-class Color(NamedTuple):
-    r: int = None
-    g: int = None
-    b: int = None
+class CommandExecuteError(Exception):
+    ...

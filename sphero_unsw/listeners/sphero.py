@@ -33,17 +33,14 @@
 # ========================================================================
 """
 
-from typing import NamedTuple, Union
+from typing import NamedTuple
 
 
-class ToyType(NamedTuple):
-    display_name: str
-    prefix: Union[str, None]
-    filter_prefix: str
-    cmd_safe_interval: float
-
-
-class Color(NamedTuple):
-    r: int = None
-    g: int = None
-    b: int = None
+class Options(NamedTuple):
+    disable_sleep_in_charger: bool
+    enable_vector_drive: bool
+    disable_self_level_in_charger: bool
+    enable_tail_light_always_on: bool
+    enable_motion_timeout: bool
+    enable_gyro_max_notify: bool
+    enable_full_speed: bool

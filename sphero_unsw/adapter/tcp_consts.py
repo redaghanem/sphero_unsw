@@ -33,17 +33,19 @@
 # ========================================================================
 """
 
-from typing import NamedTuple, Union
+from enum import Enum
 
 
-class ToyType(NamedTuple):
-    display_name: str
-    prefix: Union[str, None]
-    filter_prefix: str
-    cmd_safe_interval: float
+class RequestOp(bytes, Enum):
+    SCAN = b'\x00'
+    INIT = b'\x01'
+    SET_CALLBACK = b'\x02'
+    WRITE = b'\x03'
+    FIND = b'\x04'
+    END = b'\xff'
 
 
-class Color(NamedTuple):
-    r: int = None
-    g: int = None
-    b: int = None
+class ResponseOp(bytes, Enum):
+    OK = b'\x00'
+    ON_DATA = b'\x01'
+    ERROR = b'\xff'

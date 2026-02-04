@@ -33,17 +33,33 @@
 # ========================================================================
 """
 
-from typing import NamedTuple, Union
+from sphero_unsw.commands import Commands
+from sphero_unsw.helper import to_bytes, to_int
 
 
-class ToyType(NamedTuple):
-    display_name: str
-    prefix: Union[str, None]
-    filter_prefix: str
-    cmd_safe_interval: float
+class FactoryTest(Commands):
+    _did = 31
 
+    @staticmethod
+    def get_factory_mode_challenge(toy, proc=None):
+        return to_int(toy._execute(FactoryTest._encode(toy, 19, proc)).data)
 
-class Color(NamedTuple):
-    r: int = None
-    g: int = None
-    b: int = None
+    @staticmethod
+    def enter_factory_mode(toy, challenge: int, proc=None):
+        toy._execute(FactoryTest._encode(toy, 20, proc, to_bytes(challenge, 4)))
+
+    @staticmethod
+    def exit_factory_mode(toy, proc=None):
+        toy._execute(FactoryTest._encode(toy, 21, proc))
+
+    @staticmethod
+    def get_chassis_id(toy, proc=None):
+        return to_int(toy._execute(FactoryTest._encode(toy, 39, proc)).data)
+
+    @staticmethod
+    def enable_extended_life_test(toy, enable, proc=None):
+        toy._execute(FactoryTest._encode(toy, 49, proc, [int(enable)]))
+
+    @staticmethod
+    def get_factory_mode_status(toy, proc=None):
+        return bool(toy._execute(FactoryTest._encode(toy, 52, proc)).data[0])

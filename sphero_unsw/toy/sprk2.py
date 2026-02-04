@@ -33,17 +33,9 @@
 # ========================================================================
 """
 
-from typing import NamedTuple, Union
+from sphero_unsw.toy.bb8 import BB8
+from sphero_unsw.types import ToyType
 
 
-class ToyType(NamedTuple):
-    display_name: str
-    prefix: Union[str, None]
-    filter_prefix: str
-    cmd_safe_interval: float
-
-
-class Color(NamedTuple):
-    r: int = None
-    g: int = None
-    b: int = None
+class Sprk2(BB8):
+    toy_type = ToyType('Sphero SPRK+', 'SK-', 'SK', .06)
