@@ -24,7 +24,7 @@
 #  introductory robotics concepts through hands-on activities using Sphero BOLT+ robots.
 #
 #  |---------------------------------------------------------------------|
-#  | Version: 0.1.10                                                      |
+#  | Version: 0.1.11                                                      |
 #  | License: MIT License                                                |
 #  | Repository: https://github.com/redaghanem/sphero_unsw               |
 #  | Pypi package: https://pypi.org/project/sphero-unsw                  |
@@ -78,7 +78,7 @@ pip install sphero_unsw
 
 - All features from the original [`spherov2`](https://github.com/artificial-intelligence-class/spherov2.py) library.
 - Extended functionality for Sphero BOLT+.
-- Compatible with Python 3.7 through 3.10 (inclusive)
+- Compatible with Python 3.7 through 3.12.x (inclusive)
 
 <!-- ----------------------------------------------------------------------------------------- -->
 ## Current Progress
